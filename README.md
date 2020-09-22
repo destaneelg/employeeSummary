@@ -1,15 +1,13 @@
 # employeeSummary
-#Title
+## Title
 
  
 
 ## User Story
-
-```
 ```
 
-##Website Functionality
-
+```
+## Website Functionality
 ```
 GIVEN 
 WHEN
@@ -18,13 +16,9 @@ WHEN
 THEN
 WHEN
 THEN
-
-
 ```
-The following animation demonstrates the application functionality (cmd + click):
-
 ## Obstacles faced during development
-``
+```
 
 ```
 ## Instructions for future development
@@ -32,5 +26,7 @@ The following animation demonstrates the application functionality (cmd + click)
 
 ```
 ## Review
-* The URL of the deployed application.
-                         
+* The URL of the GitHub repository
+
+* A video demonstrating the entirety of the app's functionality 
+
