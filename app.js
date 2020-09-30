@@ -54,11 +54,9 @@ inquirer
     );
         team.push(internProfile);
     rerun();
-  });
-}
+  })}
 });
 }
-
 function rerun() {
   inquirer.prompt(question.newOutput).then((answer) => {
     switch (answer.role) {
@@ -73,10 +71,8 @@ function rerun() {
     }
   });
 }
-// After the user has input all employees desired, call the `render` function (required
-// above) and pass in an array containing all employee objects; the `render` function will
-// generate and return a block of HTML including templated divs for each employee!
 const htmlFile = (html) => {
   fs.writeFileSync(outputPath, html);
   };
 newEmployee();
+var PORT = process.env.PORT ||3001
