@@ -61,13 +61,15 @@ function rerun() {
   inquirer.prompt(question.newOutput).then((answer) => {
     switch (answer.role) {
       case "Yes":
+        function restart(event) {
+          event.preventDefault
+        }
         newEmployee();
-        break;
-
+  
       case "No":
         let html = render(team);
         htmlFile(html);
-        break;
+
     }
   });
 }
