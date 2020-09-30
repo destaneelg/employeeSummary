@@ -1,5 +1,3 @@
-//runs the app
-
 const question = require("./lib/question");
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
@@ -65,7 +63,7 @@ function rerun() {
   inquirer.prompt(question.newOutput).then((answer) => {
     switch (answer.role) {
       case "Yes":
-        createEmployee();
+        newEmployee();
         break;
 
       case "No":
