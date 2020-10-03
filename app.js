@@ -57,24 +57,34 @@ inquirer
   })}
 });
 }
+
 function rerun() {
   inquirer.prompt(question.newOutput).then((answer) => {
-    switch (answer.role) {
+    switch(answer.role) {
       case "Yes":
-        function restart(event) {
-          event.preventDefault
-        }
         newEmployee();
-  
-      case "No":
-        let html = render(team);
+        break;
+        case "No":
+          let html = render(team);
+          html();
+          htmlFile(html);
+         
+        break;
+      default:
         htmlFile(html);
-
+  
     }
-  });
+  }).catch(function(err) {
+    console.log(err)})
 }
 const htmlFile = (html) => {
   fs.writeFileSync(outputPath, html);
   };
 newEmployee();
-var PORT = process.env.PORT ||3001
+htmlFile();
+
+
+
+
+//   .catch(function(err) {
+  // console.log(err)});
