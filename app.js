@@ -57,29 +57,30 @@ inquirer
 });
 }
 
-function rerun() {
-  inquirer.prompt(question.newOutput).then((answer) => {
-    switch(answer.role) {
-      case "Yes":
-        newEmployee();
-        break;
-        case "No":
-          let html = render(team);
-          html();
-          htmlFile(html);
-         
-        break;
-      default:
-        htmlFile(html);
-  
-    }
-  }).catch(function(err) {
-    console.log(err)})
-}
+let html = render(team);
+
 const htmlFile = (html) => {
   fs.writeFileSync(outputPath, html);
   };
+
+function rerun() {
+  inquirer.prompt(question.newOutput).then((answer) => {
+    switch(answer.role) {
+      case "Yes!":
+        newEmployee();
+        break;
+        case "No.":
+          htmlFile(html);
+         console.log("Employee Profile Generated!")
+        break;
+      default:
+        htmlFile(html);
+  }
+  }).catch(function(err) {
+    console.log(err)})
+}
+
 newEmployee();
-htmlFile();
+
 
 
