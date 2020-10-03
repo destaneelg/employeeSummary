@@ -6,13 +6,16 @@ const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
 
+//Used in writeToFile function 
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
+//Team Array, profiles get pushed to 
 var team = [];
 
+//Function to go through questions file 
 function newEmployee() {
 inquirer
 .prompt(question.baseEmployeeOutput)
@@ -27,6 +30,7 @@ inquirer
         engineerInput.github
          );
          team.push(engineerProfile);
+         console.log(team);
   
         rerun();
     }));
@@ -56,13 +60,10 @@ inquirer
   })}
 });
 }
-
+//HTML calls the render function(line 12), with team as a parameter 
 let html = render(team);
 
-const htmlFile = (html) => {
-  fs.writeFileSync(outputPath, html);
-  };
-
+//Gives user the option to end and write file or to add another employee
 function rerun() {
   inquirer.prompt(question.newOutput).then((answer) => {
     switch(answer.role) {
@@ -71,15 +72,26 @@ function rerun() {
         break;
         case "No.":
           htmlFile(html);
-         console.log("Employee Profile Generated!")
         break;
       default:
         htmlFile(html);
   }
+ //Adding .catch to resolve unhandled promise error 
   }).catch(function(err) {
     console.log(err)})
-}
+};
 
+//Function to write the file 
+const htmlFile = () => {
+  fs.writeFile(outputPath, render(team),"utf8", function(err){
+    if(err)
+      throw err;
+      console.log("saved");
+
+  });
+  };
+
+//Calling newEmployee to run function 
 newEmployee();
 
 
